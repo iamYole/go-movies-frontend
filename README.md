@@ -1,5 +1,5 @@
 # Go Watch A Movie FrontEnd
-Created using react
+Created with React
 
 ![alt text](doc/images/homepage.png)
 

@@ -2,7 +2,9 @@ import { useState } from "react";
 import Input from "./form/input";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,11 +14,13 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleRegister = (event) => {
     event.preventDefault();
 
-    //build the request payload
+    //build the payload
     let payload = {
+      first_name: firstname,
+      last_name: lastname,
       email: email,
       password: password,
     };
@@ -30,7 +34,7 @@ const Login = () => {
       body: JSON.stringify(payload),
     };
 
-    fetch(`/authenticate`, requestOptions)
+    fetch(`/register`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -51,10 +55,30 @@ const Login = () => {
 
   return (
     <div className="col-md-6 offset-md-3">
-      <h2>Login</h2>
+      <h2>Register</h2>
       <hr />
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
+        <Input
+          title="First Name"
+          type="text"
+          className="form-control"
+          name="firstname"
+          autocomplete="firstname-new"
+          onChange={(event) => {
+            setFirstname(event.target.valus);
+          }}
+        />
+        <Input
+          title="Last Name"
+          type="text"
+          className="form-control"
+          name="lastname"
+          autocomplete="lastname-new"
+          onChange={(event) => {
+            setLastname(event.target.valus);
+          }}
+        />
         <Input
           title="Email Address"
           type="email"
@@ -62,7 +86,7 @@ const Login = () => {
           name="email"
           autocomplete="email-new"
           onChange={(event) => {
-            setEmail(event.target.value);
+            setEmail(event.target.valus);
           }}
         />
         <Input
@@ -72,16 +96,14 @@ const Login = () => {
           name="password"
           autocomplete="password-new"
           onChange={(event) => {
-            setPassword(event.target.value);
+            setPassword(event.target.valus);
           }}
         />
 
-        {/* <hr /> */}
-
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <Input type="submit" className="btn btn-primary" value="Register" />
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;

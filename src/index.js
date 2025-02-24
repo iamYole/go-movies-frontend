@@ -12,6 +12,7 @@ import Genres from "./components/Genres";
 import Login from "./components/Login";
 import GraphQL from "./components/GraphQL";
 import ManageCatalog from "./components/ManageCatalog";
+import Register from "./components/Register";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/graphql", element: <GraphQL /> },
       { path: "/login", element: <Login /> },
       { path: "/manage-catalog", element: <ManageCatalog /> },
+      { path: "/register", element: <Register /> },
     ],
   },
 ]);

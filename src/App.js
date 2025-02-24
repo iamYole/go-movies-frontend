@@ -20,9 +20,14 @@ function App() {
         </div>
         <div className="col text-end">
           {jwtToken === "" ? (
+            <>
             <Link to="/login">
               <span className="badge bg-success">Login</span>
-            </Link>
+            </Link><br/>
+            <Link to="/register">
+            <span className="badge bg-success">Register</span>
+          </Link>
+          </>
           ) : (
             <a href="#!" onClick={logOut}>
               <span className="badge bg-danger">Log out</span>
