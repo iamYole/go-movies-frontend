@@ -6,21 +6,21 @@ const Movies = () => {
 
   useEffect(() => {
     const headers = new Headers();
-    headers.append("Content-Type","application/json");
+    headers.append("Content-Type", "application/json");
 
     const requestOptions = {
       method: "Get",
       headers: headers,
-    }
+    };
 
-    fetch(`http://localhost:8080/movies`, requestOptions)
+    fetch(`/movies`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data)
+        setMovies(data);
       })
-      .catch(err => {
-        console.log(err)
-      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

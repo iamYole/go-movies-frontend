@@ -11,6 +11,7 @@ const Register = () => {
   const { setJwtToken } = useOutletContext();
   const { setAlertClassname } = useOutletContext();
   const { setAlertMessage } = useOutletContext();
+  const { toggleRefresh } = useOutletContext();
 
   const navigate = useNavigate();
 
@@ -42,6 +43,7 @@ const Register = () => {
           setAlertMessage(data.message);
         } else {
           setJwtToken(data.access_token);
+          toggleRefresh(true);
           setAlertClassname("d-none");
           setAlertMessage("");
           navigate("/");

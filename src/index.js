@@ -25,7 +25,6 @@ const router = createBrowserRouter([
       { path: "/admin/movie/o", element: <EditMovie /> },
       { path: "/movie/:id", element: <Movie /> },
       { path: "/genres", element: <Genres /> },
-      { path: "/admin/movie/o", element: <EditMovie /> },
       { path: "/graphql", element: <GraphQL /> },
       { path: "/login", element: <Login /> },
       { path: "/manage-catalog", element: <ManageCatalog /> },
