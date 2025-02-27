@@ -14,6 +14,7 @@ const ManageCatalog = () => {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer " + jwtToken);
+    console.log(jwtToken);
 
     const requestOptions = {
       method: "Get",
