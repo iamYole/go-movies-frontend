@@ -22,7 +22,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/movies", element: <Movies /> },
-      { path: "/admin/movie/o", element: <EditMovie /> },
+      { path: "/admin/movie/0", element: <EditMovie /> },
+      { path: "/admin/movie/:id", element: <EditMovie /> },
       { path: "/movie/:id", element: <Movie /> },
       { path: "/genres", element: <Genres /> },
       { path: "/graphql", element: <GraphQL /> },

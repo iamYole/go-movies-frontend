@@ -3,10 +3,6 @@ import Input from "./form/input";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Register = () => {
-  // const [firstname, setFirstname] = useState("");
-  // const [lastname, setLastname] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const { setJwtToken } = useOutletContext();
   const { setAlertClassname } = useOutletContext();
   const { setAlertMessage } = useOutletContext();
@@ -16,9 +12,8 @@ const Register = () => {
   const [errors, setErrors] = useState([]);
 
   const [user, setUser] = useState({
-    id: 0,
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
   });
@@ -39,21 +34,13 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
 
-    //build the payload
-    // let payload = {
-    //   first_name: firstname,
-    //   last_name: lastname,
-    //   email: email,
-    //   password: password,
-    // };
-
+    const requestBody = user;
     const requestOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
-      //body: JSON.stringify(payload),
+      body: JSON.stringify(requestBody),
     };
 
     fetch(`/register`, requestOptions)
@@ -80,15 +67,14 @@ const Register = () => {
     <div className="col-md-6 offset-md-3">
       <h2>Register</h2>
       <hr />
-      <pre>{JSON.stringify(user, null, 3)}</pre>
       <form onSubmit={handleRegister}>
         <Input
           title="First Name"
           type="text"
           className="form-control"
-          name="firstname"
+          name="first_name"
           autocomplete="firstname-new"
-          onChange={handleChange("firstname")}
+          onChange={handleChange("first_name")}
           errorDiv={hasError("firstname") ? "text-danger" : "d-none"}
           errorMsg={"Please enter your firstname"}
         />
@@ -96,9 +82,9 @@ const Register = () => {
           title="Last Name"
           type="text"
           className="form-control"
-          name="lastname"
+          name="last_name"
           autocomplete="lastname-new"
-          onChange={handleChange("lastname")}
+          onChange={handleChange("last_name")}
           errorDiv={hasError("lastname") ? "text-danger" : "d-none"}
           errorMsg={"Please enter your lastname"}
         />
